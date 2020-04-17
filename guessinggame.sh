@@ -4,11 +4,13 @@
 function play_game {
 	local num_files=$(ls | wc -l)
 	local guess=-1
-	while [[ $guess -ne $num_files ]]
+	while [[ $guess =~ [^0-9]+ ]] || [[ $guess -ne $num_files ]]
 	do
 		read guess
-
-		if [[ $guess -gt $num_files ]]
+		if [[ $guess =~ [^0-9]+ ]]
+		then
+			echo "Your guess should be a Natural Number, try again!"
+		elif [[ $guess -gt $num_files ]]
 		then
 			echo "Too high, try again!"
 		elif [[ $guess -lt $num_files ]]
