@@ -2,7 +2,7 @@
 # File: guessinggame.sh
 
 function play_game {
-	local num_files=$(find $1 -type f | wc -l)
+	local num_files=$(ls | wc -l)
 	local guess=-1
 	while [[ $guess -ne $num_files ]]
 	do
